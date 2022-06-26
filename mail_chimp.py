@@ -12,9 +12,10 @@ class MailChimp:
         load_dotenv(dotenv_path=env_path)
         _api_key = os.environ['API_KEY']
         _server = os.environ['SERVER']
-        self._api_token = {"api_key": _api_key, "server": _server}
+        _api_token = {"api_key": _api_key, "server": _server}
+
         self._client = MailchimpMarketing.Client()
-        self._client.set_config(self._api_token)
+        self._client.set_config(_api_token)
 
     def find_campaign_id_by_folder_id(self, folder_id):
         try:
