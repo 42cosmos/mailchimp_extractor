@@ -1,22 +1,13 @@
 import os
-import json
 import pandas as pd
 
 import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
 
 
-def load_secret(file_path, name):
-    with open(file_path, "r") as f:
-        secret = json.load(f)[name]
-    return secret
-
-
 class MailChimp:
     def __init__(self):
-        key_path = "/Users/sonny/workspace/keys_and_tokens"
-
-        self._api_token = load_secret(os.path.join(key_path, 'secret.json'), "MailChimp")
+        self.api_token = os.environ['API_KEY']
         self._client = MailchimpMarketing.Client()
         self._client.set_config(self._api_token)
 
