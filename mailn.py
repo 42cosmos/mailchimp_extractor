@@ -1,4 +1,4 @@
-from mail_chimp import MailChimp
+from extract_mailchimp_data.mail_chimp import MailChimp
 
 
 def return_campaign_information_dataframe(campaign_id):

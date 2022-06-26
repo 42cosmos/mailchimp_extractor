@@ -1,11 +1,16 @@
 from setuptools import setup, find_packages
 
-NAME = "extract-mailchimp-data"
-VERSION = "0.0.1"
+NAME = "extract_mailchimp"
+VERSION = "0.0.5"
 
 REQUIRES = [
     "python-dotenv==0.20.0",
-    "mailchimp-marketing"
+    "mailchimp-marketing>=3.0.75",
+    "certifi>=2017.4.17",
+    "python-dateutil>=2.1",
+    "requests>=2.23",
+    "six>=1.10",
+    "urllib3>=1.23"
 ]
 
 setup(
