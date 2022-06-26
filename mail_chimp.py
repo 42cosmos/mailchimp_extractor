@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from dotenv import load_dotenv
 
 import mailchimp_marketing as MailchimpMarketing
 from mailchimp_marketing.api_client import ApiClientError
@@ -7,7 +8,11 @@ from mailchimp_marketing.api_client import ApiClientError
 
 class MailChimp:
     def __init__(self):
-        self.api_token = os.environ['API_KEY']
+        env_path = '.env'
+        load_dotenv(dotenv_path=env_path)
+        _api_key = os.environ['API_KEY']
+        _server = os.environ['SERVER']
+        self._api_token = {"api_key": _api_key, "server": _server}
         self._client = MailchimpMarketing.Client()
         self._client.set_config(self._api_token)
 
