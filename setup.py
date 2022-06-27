@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 NAME = "extract_mailchimp"
-VERSION = "0.0.5"
+VERSION = "0.0.6"
 
 REQUIRES = [
     "python-dotenv==0.20.0",
