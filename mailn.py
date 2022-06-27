@@ -12,12 +12,3 @@ if __name__ == "__main__":
     campaign_folder_id = "49808e33ee"
     mc = MailChimp()
     print(mc.get_campaign_id_by_folder_id(campaign_folder_id))
-    #
-    # campaign_id_list = list()
-    # for campaign_raw in mc.find_campaign_id_by_folder_id(campaign_folder_id)['campaigns']:
-    #     campaign_id = campaign_raw.get('id')
-    #     campaign_title = campaign_raw.get('settings').get('title')
-    #     print([campaign_id, campaign_title])
-    #     break
-        # information, click_details = return_campaign_information_dataframe(campaign_id)
-        # print(information.shape, click_details.shape)
