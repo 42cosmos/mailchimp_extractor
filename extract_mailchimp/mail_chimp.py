@@ -17,9 +17,23 @@ class MailChimp:
         self._client = MailchimpMarketing.Client()
         self._client.set_config(_api_token)
 
-    def find_campaign_id_by_folder_id(self, folder_id):
+    def get_campaign_raw_data_by_folder_id(self, folder_id, count=1000):
         try:
-            result = self._client.campaigns.list(count=1000, status='sent', folder_id=folder_id)
+            result = self._client.campaigns.list(count=count, status='sent', folder_id=folder_id)
+            return result
+
+        except ApiClientError as error:
+            print("Error: {}".format(error.text))
+
+    def get_campaign_id_by_folder_id(self, folder_id, count=1000):
+        try:
+            result = list()
+            response = self._client.campaigns.list(count=count, status='sent', folder_id=folder_id)
+            for campaign_raw in response['campaigns']:
+                campaign_id = campaign_raw.get('id')
+                campaign_title = campaign_raw.get('settings').get('title')
+                result.append([campaign_id, campaign_title])
+
             return result
 
         except ApiClientError as error:
